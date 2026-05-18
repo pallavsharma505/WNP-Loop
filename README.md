@@ -1,5 +1,127 @@
 # WNP Loop: A Proposal for Iterative AI-Assisted Development
 
+## How to install
+
+This repository contains a reusable Agent Skill for the WNP Loop methodology in [`SKILL.md`](./SKILL.md).
+
+Most AI coding agents that support skills expect this shape:
+
+```text
+wnp-loop/
+└── SKILL.md
+```
+
+Install by copying this repository's `SKILL.md` into a skill folder named `wnp-loop` for your agent. After installing, restart the agent or start a new session if it does not pick up new skills live.
+
+### Codex
+
+Install globally for all Codex projects:
+
+```bash
+mkdir -p ~/.codex/skills/wnp-loop
+cp SKILL.md ~/.codex/skills/wnp-loop/SKILL.md
+```
+
+Then restart Codex or start a new Codex session. Invoke it by asking Codex to use the WNP Loop methodology, or by using the normal WNP cadence:
+
+```text
+What's next?
+Proceed.
+```
+
+If your Codex setup supports project-local skills, install it inside the repository instead:
+
+```bash
+mkdir -p .codex/skills/wnp-loop
+cp SKILL.md .codex/skills/wnp-loop/SKILL.md
+```
+
+Use the global install when you want WNP Loop available everywhere. Use the project-local install when a team should share the skill with a specific repository.
+
+### Claude Code
+
+Install globally for all Claude Code projects:
+
+```bash
+mkdir -p ~/.claude/skills/wnp-loop
+cp SKILL.md ~/.claude/skills/wnp-loop/SKILL.md
+```
+
+Install for only the current project:
+
+```bash
+mkdir -p .claude/skills/wnp-loop
+cp SKILL.md .claude/skills/wnp-loop/SKILL.md
+```
+
+Claude Code discovers skills from the skill name and the `description` field in `SKILL.md`. You can trigger it naturally:
+
+```text
+Use the WNP Loop skill for this project.
+```
+
+or through the WNP cadence:
+
+```text
+What's next?
+Proceed.
+```
+
+If you create a new top-level skills directory while Claude Code is already running, restart Claude Code so it can watch and load the new directory.
+
+### OpenCode
+
+Install globally for all OpenCode projects:
+
+```bash
+mkdir -p ~/.config/opencode/skill/wnp-loop
+cp SKILL.md ~/.config/opencode/skill/wnp-loop/SKILL.md
+```
+
+Install for only the current project:
+
+```bash
+mkdir -p .opencode/skill/wnp-loop
+cp SKILL.md .opencode/skill/wnp-loop/SKILL.md
+```
+
+OpenCode also supports Claude-compatible skill directories in many setups, so an existing Claude Code install at `~/.claude/skills/wnp-loop/SKILL.md` or `.claude/skills/wnp-loop/SKILL.md` may already be discovered by OpenCode.
+
+Some OpenCode guides and integrations use a plural `skills` directory instead of `skill`. If your installed OpenCode version documents `skills`, use:
+
+```bash
+mkdir -p ~/.config/opencode/skills/wnp-loop
+cp SKILL.md ~/.config/opencode/skills/wnp-loop/SKILL.md
+```
+
+or:
+
+```bash
+mkdir -p .opencode/skills/wnp-loop
+cp SKILL.md .opencode/skills/wnp-loop/SKILL.md
+```
+
+### Other SKILL.md-compatible agents
+
+For Cursor, Windsurf, Gemini CLI, Cline-style agents, and other tools that support Agent Skills, use the same structure:
+
+```text
+<agent-skill-directory>/wnp-loop/SKILL.md
+```
+
+The important requirements are:
+
+- the folder is named `wnp-loop`
+- the file inside it is named `SKILL.md`
+- the YAML frontmatter remains at the top of the file
+- the agent is restarted or refreshed after installation if it does not hot-reload skills
+
+If your agent does not support skills directly, you can still use WNP Loop by telling the agent:
+
+```text
+Read this repository's SKILL.md and follow it as the operating protocol for this project.
+```
+
 ## Abstract
 
 The WNP Loop, short for "What's Next, Proceed," is an AI-assisted development methodology built around a simple operating rhythm:
